@@ -90,7 +90,7 @@ while True:
         click(x, y)
 
         if SOUL_REAPER:
-            time.sleep(91 - (click_spam * click_sleep_time)) #A raid takes 90 seconds to start
+            time.sleep(86 - (click_spam * click_sleep_time)) #A raid takes 90 seconds to start
             for i in range(1,20):
                 pydirectinput.press("m")
                 time.sleep(.01)
