@@ -27,13 +27,17 @@ def search(): #this function seaches for the "Yes" button when called, returns x
         pass
     
     return (-69, -69)
+
+click_sleep_time = 0.1
+click_spam = 20
+
 def click(x, y): #youll never guess what this function does
     print("MOVING MOUSE TO",x,y)
 
     pyautogui.moveTo(x, y + random.randint(1, 15))
-    for i in range(1, 15):
+    for i in range(1, click_sleep_time):
         subprocess.run([exe_path]) # SHOULD DO A FUCKING Click 
-        time.sleep(0.3)
+        time.sleep(click_sleep_time)
 
 print("Starting the macro, tab into roblox.")
 time.sleep(3)
@@ -57,11 +61,11 @@ while True:
         click(x, y)
 
         if SOUL_REAPER:
-            time.sleep(90) #A raid takes 90 seconds to start
+            time.sleep(91 - (click_spam * click_sleep_time)) #A raid takes 90 seconds to start
             for i in range(1,20):
                 pydirectinput.press("m")
                 time.sleep(.01)
-            time.sleep(5)
+            time.sleep(4)
             for i in range(1,20):
                 pydirectinput.press("m")
                 time.sleep(.01)
