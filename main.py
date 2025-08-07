@@ -59,7 +59,7 @@ def search(): #this function seaches for the "Yes" button when called, returns x
     return (-69, -69)
 
 click_sleep_time = 0.1
-click_spam = 20
+click_spam = 40
 
 def click(x, y): #youll never guess what this function does
     pydirectinput.moveTo(x, y)
