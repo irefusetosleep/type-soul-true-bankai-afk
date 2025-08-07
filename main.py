@@ -15,8 +15,38 @@ template = cv2.imread("Raid_Yes.png", cv2.IMREAD_COLOR)
 
 _, w, h = template.shape[::-1]
 
+# Paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
-exe_path = os.path.join(script_dir, 'Click.exe')
+ahk_file = os.path.join(script_dir, "Click.ahk")
+exe_file = os.path.join(script_dir, "Click.exe")
+ahk2exe_path = os.path.join(script_dir, "Ahk2Exe.exe")  # Adjust if needed
+
+def create_click_script(x, y):
+
+    # AHK script content
+    ahk_code = f"""
+    SetDefaultMouseSpeed, 0
+    SetMouseDelay, -1
+    SetControlDelay, -1
+    SetWinDelay, -1
+    CoordMode, Mouse, Screen
+    MouseMove, {x}, {y}
+    Click
+    ExitApp
+    """
+
+    # Write the AHK file
+    with open(ahk_file, "w") as f:
+        f.write(ahk_code.strip())
+
+    # Compile to EXE
+    subprocess.run([
+        ahk2exe_path,
+        f"[/in Click.ahk]",
+        f"[/out Click.exe]"
+    ])
+
+    print(f"Executable created: {exe_file}")
 
 def search(): #this function seaches for the "Yes" button when called, returns x and y coords of location:wq
     try:
@@ -32,12 +62,10 @@ click_sleep_time = 0.1
 click_spam = 20
 
 def click(x, y): #youll never guess what this function does
-    print("MOVING MOUSE TO",x,y)
-
-    pyautogui.moveTo(x, y + random.randint(1, 15))
-    for i in range(1, click_sleep_time):
-        subprocess.run([exe_path]) # SHOULD DO A FUCKING Click 
-        time.sleep(click_sleep_time)
+    pydirectinput.moveTo(x, y)
+    for i in range(1, click_spam):
+        pydirectinput.click()
+        #subprocess.run([exe_file]) # SHOULD DO A FUCKING Click 
 
 print("Starting the macro, tab into roblox.")
 time.sleep(3)
@@ -58,6 +86,7 @@ while True:
     x, y = search()
 
     if x != -69: #-69 means it didnt find it
+        #create_click_script(x, y)
         click(x, y)
 
         if SOUL_REAPER:
