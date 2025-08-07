@@ -2,16 +2,21 @@
 
 SOUL_REAPER = True
 
+import subprocess
 import time
 import pydirectinput
 import cv2
 import pyautogui
 import numpy as np
 import random
+import os
 
 template = cv2.imread("Raid_Yes.png", cv2.IMREAD_COLOR)
 
 _, w, h = template.shape[::-1]
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+exe_path = os.path.join(script_dir, 'Click.exe')
 
 def search(): #this function seaches for the "Yes" button when called, returns x and y coords of location:wq
     try:
@@ -28,7 +33,7 @@ def click(x, y): #youll never guess what this function does
     print("MOVING MOUSE TO",x,y)
     for i in range(1, 5):
         pyautogui.moveTo(x + random.randint(-15, 15), y)
-        pydirectinput.click()
+        subprocess.run([exe_path]) # SHOULD DO A FUCKING CLICK
         time.sleep(.2)
 
 print("Starting the macro, tab into roblox.")

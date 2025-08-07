@@ -1,4 +1,5 @@
-make sure u have python and pip installed
+make sure u have [python](https://www.python.org/downloads/) installed
+make sure u have [autohotkey](https://www.autohotkey.com/download/) installed
 
 run "RUN THIS FIRST.bat"
 

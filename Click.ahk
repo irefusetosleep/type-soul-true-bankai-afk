@@ -1,0 +1,2 @@
+﻿Click
+ExitApp
