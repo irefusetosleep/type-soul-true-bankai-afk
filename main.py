@@ -56,10 +56,10 @@ while True:
         click(x, y)
 
         if SOUL_REAPER:
-            time.sleep(95) #A raid takes 90 seconds to start
-            pydirectinput.press("M")
+            time.sleep(90) #A raid takes 90 seconds to start
+            pydirectinput.press("m")
             time.sleep(5)
-            pydirectinput.press("M")
+            pydirectinput.press("m")
     else:
         print("Couldnt find yes button")
         
