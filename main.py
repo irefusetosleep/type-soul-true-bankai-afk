@@ -24,27 +24,26 @@ def search(): #this function seaches for the "Yes" button when called, returns x
         if location is not None:
             return location
     except pyautogui.ImageNotFoundException:
-        print("Image not found, retrying")
-
-    return (-69, -69)    
+        pass
     
+    return (-69, -69)
 def click(x, y): #youll never guess what this function does
-    print("Clicking yes")
     print("MOVING MOUSE TO",x,y)
-    for i in range(1, 5):
-        pyautogui.moveTo(x + random.randint(-15, 15), y)
-        subprocess.run([exe_path]) # SHOULD DO A FUCKING CLICK
-        time.sleep(.2)
+    for i in range(1, 50):
+        pyautogui.moveTo(x + random.randint(-15, 15), y + random.randint(-15, 15))
+        pydirectinput.click()
+        subprocess.run([exe_path]) # SHOULD DO A FUCKING Click 
+        time.sleep(0.01)
 
 print("Starting the macro, tab into roblox.")
 time.sleep(3)
 
 time_since_moved = time.time()
 
-time_to_move = 10 * 60 #15 minutes
+time_to_move = 10 * 60 #10 minutes
 
 while True:
-    time.sleep(.1)
+    time.sleep(.3)
 
     if time.time() - time_since_moved > time_to_move:
         pydirectinput.press("Space") #built in anti-afk kick!
@@ -57,9 +56,13 @@ while True:
 
         if SOUL_REAPER:
             time.sleep(90) #A raid takes 90 seconds to start
-            pydirectinput.press("m")
+            for i in range(1,20):
+                pydirectinput.press("m")
+                time.sleep(.01)
             time.sleep(5)
-            pydirectinput.press("m")
+            for i in range(1,20):
+                pydirectinput.press("m")
+                time.sleep(.01)
     else:
         print("Couldnt find yes button")
         
