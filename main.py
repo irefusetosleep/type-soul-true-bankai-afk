@@ -29,11 +29,11 @@ def search(): #this function seaches for the "Yes" button when called, returns x
     return (-69, -69)
 def click(x, y): #youll never guess what this function does
     print("MOVING MOUSE TO",x,y)
-    for i in range(1, 50):
-        pyautogui.moveTo(x + random.randint(-15, 15), y + random.randint(-15, 15))
-        pydirectinput.click()
+
+    pyautogui.moveTo(x, y + random.randint(1, 15))
+    for i in range(1, 15):
         subprocess.run([exe_path]) # SHOULD DO A FUCKING Click 
-        time.sleep(0.01)
+        time.sleep(0.3)
 
 print("Starting the macro, tab into roblox.")
 time.sleep(3)
@@ -46,8 +46,10 @@ while True:
     time.sleep(.3)
 
     if time.time() - time_since_moved > time_to_move:
-        pydirectinput.press("Space") #built in anti-afk kick!
         time_since_moved = time.time()
+        for i in range(1,10):
+            pydirectinput.press("Space") #built in anti-afk kick!
+            time.sleep(0.1)
 
     x, y = search()
 
